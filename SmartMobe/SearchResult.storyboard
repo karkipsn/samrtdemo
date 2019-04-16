@@ -54,11 +54,20 @@
                     </view>
                     <connections>
                         <outlet property="tableViewPhotos" destination="1VB-Sb-Syy" id="lid-aD-HKm"/>
+                        <segue destination="PKV-On-clH" kind="showDetail" identifier="SegueSearch" id="lLt-Qb-2Or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhC-fM-pkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10.4" y="110.19490254872565"/>
+        </scene>
+        <!--DetailsViewController-->
+        <scene sceneID="n7I-bi-EnE">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DetailsViewController" storyboardName="Details" referencedIdentifier="DetailsViewController" id="PKV-On-clH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a11-5Z-BYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592" y="146"/>
         </scene>
     </scenes>
 </document>

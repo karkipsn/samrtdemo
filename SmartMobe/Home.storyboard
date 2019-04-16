@@ -79,6 +79,7 @@
                         <outlet property="searchButton" destination="jV0-wf-LEw" id="6pU-vS-4pm"/>
                         <outlet property="tableViewPhotos" destination="1VB-Sb-Syy" id="lid-aD-HKm"/>
                         <segue destination="1py-tC-3V5" kind="showDetail" identifier="SegueSearch" id="ytt-nS-pSN"/>
+                        <segue destination="hYH-Pf-avm" kind="showDetail" identifier="SegueDetail" id="Wn7-e1-Qhs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhC-fM-pkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,6 +93,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vB-rd-rfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-270" y="-143"/>
+        </scene>
+        <!--DetailsViewController-->
+        <scene sceneID="AGM-AP-waW">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DetailsViewController" storyboardName="Details" referencedIdentifier="DetailsViewController" id="hYH-Pf-avm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpU-G5-92T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257" y="-3"/>
         </scene>
     </scenes>
 </document>

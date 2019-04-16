@@ -77,6 +77,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate,UITableViewDataS
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let image = self.picArray[indexPath.section]
+        
+        let ovc = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        ovc.navigationItem.title = "Dr Shipment Details"
+        navigationItem.title = "Back"
+        ovc.imageId = "\(image.id!)"
+        self.navigationController?.pushViewController(ovc, animated: true)
+        
+    }
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
