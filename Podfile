@@ -7,8 +7,11 @@ target 'SmartMobe' do
   
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'Firebase/Storage'
+ 
+ pod 'Alamofire'
+# pod 'SDWebImage', '~> 5.0'
+ pod 'AlamofireImage', '~> 3.5'
+ pod "SwiftyJSON", :git => "https://github.com/acegreen/SwiftyJSON.git", :branch => "swift3"
 
 
   # Pods for SmartMobe
@@ -16,6 +19,12 @@ target 'SmartMobe' do
   target 'SmartMobeTests' do
     inherit! :search_paths
     # Pods for testing
+    
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    
+    pod 'Alamofire'
+    pod "SwiftyJSON", :git => "https://github.com/acegreen/SwiftyJSON.git", :branch => "swift3"
   end
 
   target 'SmartMobeUITests' do
