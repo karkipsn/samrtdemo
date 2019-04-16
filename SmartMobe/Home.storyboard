@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SpZ-XJ-W03">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0zb-IH-N5d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="xOf-4l-Zfk">
+            <objects>
+                <navigationController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0zb-IH-N5d" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HWK-i1-2kH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SpZ-XJ-W03" kind="relationship" relationship="rootViewController" id="o3t-WX-PsG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mim-3Q-CZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2082" y="-185"/>
+        </scene>
+        <!--SmartMobe-->
         <scene sceneID="OsB-iO-vNj">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SpZ-XJ-W03" customClass="HomeViewController" customModule="SmartMobe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SpZ-XJ-W03" customClass="HomeViewController" customModule="SmartMobe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UqW-ud-Aal"/>
                         <viewControllerLayoutGuide type="bottom" id="Zr1-Ct-Es0"/>
@@ -52,13 +68,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="SmartMobe" id="Hn7-Bh-Dxm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="jV0-wf-LEw">
+                            <connections>
+                                <action selector="searchButtonTapped:" destination="SpZ-XJ-W03" id="cED-5b-gxN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchButton" destination="jV0-wf-LEw" id="6pU-vS-4pm"/>
                         <outlet property="tableViewPhotos" destination="1VB-Sb-Syy" id="lid-aD-HKm"/>
+                        <segue destination="1py-tC-3V5" kind="showDetail" identifier="SegueSearch" id="ytt-nS-pSN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhC-fM-pkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10.4" y="110.19490254872565"/>
+            <point key="canvasLocation" x="-932" y="-154"/>
+        </scene>
+        <!--SearchResultViewController-->
+        <scene sceneID="QuI-wb-HWU">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SearchResultViewController" storyboardName="SearchResult" referencedIdentifier="SearchResultViewController" id="1py-tC-3V5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8vB-rd-rfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-270" y="-143"/>
         </scene>
     </scenes>
 </document>

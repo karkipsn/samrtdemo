@@ -11,13 +11,29 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 
-class HomeViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class HomeViewController: UIViewController, UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate {
+    
+    // Search bar variables
+    
+    var searchBar = UISearchBar()
+    var searchBarButtonItem: UIBarButtonItem?
+    
+    // Variables for saving the rightbuttons on nav bar
+    
+    var sav_searchItem: UIBarButtonItem = UIBarButtonItem()
     
 
     var picArray = [Image]()
     let URL_TOP = Constants.baseUrl+"/latest"
     
     @IBOutlet weak var tableViewPhotos: UITableView!
+    @IBOutlet weak var searchButton: UIBarButtonItem?
+    
+    @IBAction func searchButtonTapped(_ searchBar: UIBarButtonItem) {
+        print("Hello I am Clicked")
+        
+        showSearchBar()
+    }
     
     
     //the method returning the number of Sections
@@ -65,14 +81,16 @@ class HomeViewController: UIViewController, UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Storing the UIRightBarButtonItems
         
+        sav_searchItem = navigationItem.rightBarButtonItems![0]
         
         CircularProgess().showActivityIndicator(uiView: self.view)
         
         Alamofire.request(URL_TOP) .responseJSON
             { response in
                 
-                print(response)
+//                print(response)
                 
                 let jsonData = JSON(response.result.value!)
                 
@@ -101,14 +119,83 @@ class HomeViewController: UIViewController, UITableViewDataSource,UITableViewDel
         super.didReceiveMemoryWarning()
     }
     
+
+    func endActivityIndicator() {
+        CircularProgess().hideActivityIndicator(uiView: self.view)
+    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Photos"
+    // MARK: Search Bar Display
+    
+    func showSearchBar() {
+        
+        searchBar.alpha = 0
+        
+        navigationItem.titleView = searchBar
+        searchBar.placeholder = "Enter your query for search ....."
+        
+        searchBar.delegate = self
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        
+        // To show Cancel button on the right side of navigation bar
+        
+        searchBar.showsCancelButton = true
+        searchBarButtonItem = navigationItem.rightBarButtonItem
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.searchBar.alpha = 1
+            self.definesPresentationContext = true
+            self.navigationItem.rightBarButtonItem = nil
+            
+        }, completion: { finished in
+            
+            // To focus within the searchbar and to dispaly the soft keyboard
+            
+            self.searchBar.becomeFirstResponder()
+        })
+        
+    }
+    
+    // MARK: To Hide Search Bar Display
+    
+    func hideSearchBar() {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.alpha = 0.0
+            self.navigationItem.titleView = nil
+            
+        }, completion: { finished in
+            
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                
+                self.navigationItem.rightBarButtonItem = self.sav_searchItem
+//                self.navigationItem.rightBarButtonItems?.append(self.sav_barItem)
+                return
+            }
+            
+        })
     }
     
     
-    func endActivityIndicator() {
-        CircularProgess().hideActivityIndicator(uiView: self.view)
+    //MARK: UISearchBarDelegates (cancel button and search button functionality)
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.searchBar.resignFirstResponder()
+        
+        guard let query = self.searchBar.text else { return }
+        print(query)
+        
+        hideSearchBar()
+        //segue to order Details with orderId as a parameter in OVC
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        vc.query = query
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
