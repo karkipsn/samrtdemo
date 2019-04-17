@@ -23,5 +23,9 @@ class PhotoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews() // This is important, don't forget to call the super.layoutSubviews
+    }
 
 }

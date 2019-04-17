@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     var email : String!
     var password : String!
     
+    @IBOutlet weak var vieww:UIView!
     @IBOutlet weak var textFieldEmail:UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var buttonLogin: UIButton!
@@ -32,6 +33,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let imageName = "myImage.jpg"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        // imageView.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
+        imageView.frame = self.view.frame;
+        imageView.contentMode = .scaleAspectFit
+        self.view.addSubview(imageView)
+        
+        //Imageview on Top of View
+        self.view.bringSubview(toFront: vieww)
+        vieww.backgroundColor = .clear
         
         // Setting corner radius for the views
         textFieldEmail.layer.cornerRadius = CGFloat(Constants.viewradius)
@@ -55,18 +68,14 @@ class LoginViewController: UIViewController {
                 //Print into the console if successfully logged in
                 print("You have successfully logged in")
                 
-                //Go to the HomeViewController if the login is sucessful
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
                 self.present(vc!, animated: true, completion: nil)
                 
             } else {
                 
-                //Tells the user that there is an error and then gets firebase to tell them the error
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
-                
                 self.present(alertController, animated: true, completion: nil)
             }
         }

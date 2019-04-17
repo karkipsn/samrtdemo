@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-2082" y="-185"/>
         </scene>
-        <!--SmartMobe-->
+        <!--Home View Controller-->
         <scene sceneID="OsB-iO-vNj">
             <objects>
                 <viewController id="SpZ-XJ-W03" customClass="HomeViewController" customModule="SmartMobe" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,9 +38,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="316" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-Sb-Syy">
-                                <rect key="frame" x="5" y="65" width="365" height="600"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-Sb-Syy">
+                                <rect key="frame" x="5" y="0.0" width="365" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPhoto" rowHeight="200" id="CN3-63-neU" customClass="PhotoTableViewCell" customModule="SmartMobe" customModuleProvider="target">
@@ -49,11 +49,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u8Y-eB-jfB">
-                                                    <rect key="frame" x="8" y="8" width="367" height="307"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u8Y-eB-jfB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="200"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u8Y-eB-jfB" firstAttribute="centerY" secondItem="TjP-TD-lTs" secondAttribute="centerY" id="3QU-2K-W1k"/>
+                                                <constraint firstItem="u8Y-eB-jfB" firstAttribute="leading" secondItem="TjP-TD-lTs" secondAttribute="leading" id="Bkb-m2-JsC"/>
+                                                <constraint firstItem="u8Y-eB-jfB" firstAttribute="top" secondItem="TjP-TD-lTs" secondAttribute="top" id="F6l-Ed-3FV"/>
+                                                <constraint firstAttribute="trailing" secondItem="u8Y-eB-jfB" secondAttribute="trailing" id="auz-cS-72k"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="labelImage" destination="u8Y-eB-jfB" id="wNZ-xX-2ub"/>
@@ -67,9 +72,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1VB-Sb-Syy" firstAttribute="leading" secondItem="ldD-Pa-sH7" secondAttribute="leadingMargin" constant="-11" id="GoQ-5S-J67"/>
+                            <constraint firstItem="1VB-Sb-Syy" firstAttribute="centerX" secondItem="ldD-Pa-sH7" secondAttribute="centerX" id="HjL-FE-t5F"/>
+                            <constraint firstItem="1VB-Sb-Syy" firstAttribute="bottom" secondItem="Zr1-Ct-Es0" secondAttribute="top" id="VIN-HW-SNN"/>
+                            <constraint firstItem="1VB-Sb-Syy" firstAttribute="top" secondItem="ldD-Pa-sH7" secondAttribute="top" id="dG5-Mh-tW0"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SmartMobe" id="Hn7-Bh-Dxm">
+                    <navigationItem key="navigationItem" id="Hn7-Bh-Dxm">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="jV0-wf-LEw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="searchButtonTapped:" destination="SpZ-XJ-W03" id="cED-5b-gxN"/>
                             </connections>
@@ -84,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhC-fM-pkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-932" y="-154"/>
+            <point key="canvasLocation" x="-932" y="-154.27286356821591"/>
         </scene>
         <!--SearchResultViewController-->
         <scene sceneID="QuI-wb-HWU">

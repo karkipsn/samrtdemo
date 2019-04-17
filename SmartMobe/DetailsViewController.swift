@@ -13,11 +13,10 @@ import SwiftyJSON
 
 class DetailsViewController: UIViewController {
     
+    // To receive image id from previous pages
     var imageId: String!
-    var picArray = [Image]()
+    var id: Int!
     
-    
-    @IBOutlet weak var labelid : UILabel!
     @IBOutlet weak var labelcopy : UILabel!
     @IBOutlet weak var labelsite : UILabel!
     @IBOutlet weak var imageUrl : UIImageView!
@@ -26,33 +25,24 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let URL_SEARCH = Constants.baseUrl+"/"+imageId!
-        
+        imageUrl.layer.cornerRadius = CGFloat(Constants.cellradius)
+        imageUrl.clipsToBounds = true
         CircularProgess().showActivityIndicator(uiView: self.view)
-        
+        let URL_SEARCH = Constants.baseUrl+"/"+imageId!
         
         Alamofire.request(URL_SEARCH) .responseJSON
             { response in
                 
-                print(response)
-                
                 let jsonData = JSON(response.result.value!)
-                
-                if self.picArray.count > 0 {
-                    self.picArray.removeAll()
-                }
-                
-                let id = jsonData["id"].intValue
+                self.id = jsonData["id"].intValue
                 let url = jsonData["url"].stringValue
                 let copyright = jsonData["copyright"].stringValue
                 let site = jsonData["site"].stringValue
                 
                 let purl = URL(string: url)!
                 self.imageUrl.af_setImage(withURL: purl)
-                self.labelid.text = "\(id)"
-                self.labelcopy.text = copyright
-                self.labelsite.text = site
-    
+                self.labelcopy.text = "Copyright Owned by " + copyright
+                self.labelsite.text = "Image extracted from " + site
                 self.endActivityIndicator()
         }
     }
@@ -64,7 +54,7 @@ class DetailsViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Details"
+        navigationItem.title = "Image Id : " + imageId
     }
     
     

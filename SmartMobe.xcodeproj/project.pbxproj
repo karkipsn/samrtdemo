@@ -24,6 +24,10 @@
 		FA591B8A2265EBD9006E8C0F /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA591B892265EBD9006E8C0F /* Details.storyboard */; };
 		FA591B8C2265EBFC006E8C0F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA591B8B2265EBFC006E8C0F /* SearchResultViewController.swift */; };
 		FA591B8E2265EC10006E8C0F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA591B8D2265EC10006E8C0F /* DetailsViewController.swift */; };
+		FA591BB02266DE1C006E8C0F /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA591BAF2266DE1C006E8C0F /* HomeTests.swift */; };
+		FA591BB22266DE30006E8C0F /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA591BB12266DE30006E8C0F /* SearchTests.swift */; };
+		FA591BB42266DE40006E8C0F /* DetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA591BB32266DE40006E8C0F /* DetailsTests.swift */; };
+		FA6B51F322672CAC006A701D /* myImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA6B51F222672CAC006A701D /* myImage.jpg */; };
 		FA8042952264947100421934 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8042942264947100421934 /* AppDelegate.swift */; };
 		FA80429D2264947100421934 /* SmartMobe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA80429B2264947100421934 /* SmartMobe.xcdatamodeld */; };
 		FA80429F2264947100421934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80429E2264947100421934 /* Assets.xcassets */; };
@@ -72,6 +76,10 @@
 		FA591B892265EBD9006E8C0F /* Details.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		FA591B8B2265EBFC006E8C0F /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		FA591B8D2265EC10006E8C0F /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		FA591BAF2266DE1C006E8C0F /* HomeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
+		FA591BB12266DE30006E8C0F /* SearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
+		FA591BB32266DE40006E8C0F /* DetailsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsTests.swift; sourceTree = "<group>"; };
+		FA6B51F222672CAC006A701D /* myImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = myImage.jpg; path = ../../../../Documents/myImage.jpg; sourceTree = "<group>"; };
 		FA8042912264947100421934 /* SmartMobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartMobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8042942264947100421934 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA80429C2264947100421934 /* SmartMobe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartMobe.xcdatamodel; sourceTree = "<group>"; };
@@ -171,7 +179,6 @@
 			children = (
 				FA80429B2264947100421934 /* SmartMobe.xcdatamodeld */,
 				FA8042A32264947100421934 /* Info.plist */,
-				FA8042942264947100421934 /* AppDelegate.swift */,
 				FA591B692265929F006E8C0F /* GoogleService-Info.plist */,
 				FA80429E2264947100421934 /* Assets.xcassets */,
 			);
@@ -182,8 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				FA591B73226599BD006E8C0F /* Constants.swift */,
-				FA591B812265D221006E8C0F /* CircularProgess.swift */,
-				FA591B832265D5CF006E8C0F /* UIColorExtensions.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -206,6 +211,23 @@
 				FA591B7D2265AA9E006E8C0F /* PhotoTableViewCell.swift */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		FA6B51F422673207006A701D /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				FA591B832265D5CF006E8C0F /* UIColorExtensions.swift */,
+				FA591B812265D221006E8C0F /* CircularProgess.swift */,
+			);
+			name = UIViews;
+			sourceTree = "<group>";
+		};
+		FA6B51F522673228006A701D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA6B51F222672CAC006A701D /* myImage.jpg */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		FA8042882264947000421934 = {
@@ -233,6 +255,9 @@
 		FA8042932264947100421934 /* SmartMobe */ = {
 			isa = PBXGroup;
 			children = (
+				FA8042942264947100421934 /* AppDelegate.swift */,
+				FA6B51F422673207006A701D /* UIViews */,
+				FA6B51F522673228006A701D /* Resources */,
 				FA591B7C2265A36B006E8C0F /* Constants */,
 				FA591B7B2265A35F006E8C0F /* Utilities */,
 				FA591B7A2265A350006E8C0F /* Controllers */,
@@ -247,6 +272,9 @@
 			children = (
 				FA8042AC2264947100421934 /* SmartMobeTests.swift */,
 				FA8042AE2264947100421934 /* Info.plist */,
+				FA591BAF2266DE1C006E8C0F /* HomeTests.swift */,
+				FA591BB12266DE30006E8C0F /* SearchTests.swift */,
+				FA591BB32266DE40006E8C0F /* DetailsTests.swift */,
 			);
 			path = SmartMobeTests;
 			sourceTree = "<group>";
@@ -375,6 +403,7 @@
 				FA8042A22264947100421934 /* LaunchScreen.storyboard in Resources */,
 				FA591B8A2265EBD9006E8C0F /* Details.storyboard in Resources */,
 				FA591B882265EBC3006E8C0F /* SearchResult.storyboard in Resources */,
+				FA6B51F322672CAC006A701D /* myImage.jpg in Resources */,
 				FA591B7622659F35006E8C0F /* Home.storyboard in Resources */,
 				FA591B6A2265929F006E8C0F /* GoogleService-Info.plist in Resources */,
 				FA80429F2264947100421934 /* Assets.xcassets in Resources */,
@@ -532,6 +561,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA591BB22266DE30006E8C0F /* SearchTests.swift in Sources */,
+				FA591BB02266DE1C006E8C0F /* HomeTests.swift in Sources */,
+				FA591BB42266DE40006E8C0F /* DetailsTests.swift in Sources */,
 				FA8042AD2264947100421934 /* SmartMobeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

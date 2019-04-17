@@ -18,29 +18,24 @@ class SearchResultViewController: UIViewController, UITableViewDataSource,UITabl
     var picArray = [Image]()
     let URL_SEARCH = Constants.baseUrl+"/latest"
     
-    
     @IBOutlet weak var tableViewPhotos: UITableView!
     
     
-    //the method returning the number of Sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return picArray.count
     }
     
     
-    //the method returning size of the list
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
     }
     
     
-    //Set the spacing between sections through Header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(Constants.cellSpacingHeight)
     }
     
     
-    // Make the background color show through for either header of footer according to use // in this header it will clear the color between the gaps
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
@@ -57,22 +52,20 @@ class SearchResultViewController: UIViewController, UITableViewDataSource,UITabl
         cell.labelImage.af_setImage(withURL: url)
         cell.layer.cornerRadius = CGFloat(Constants.cellradius)
         cell.labelImage.layer.cornerRadius = CGFloat(Constants.cellradius)
-        cell.accessoryType = .disclosureIndicator
+        //        cell.accessoryType = .disclosureIndicator
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let image = self.picArray[indexPath.section]
-        
         let ovc = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         ovc.navigationItem.title = "Dr Shipment Details"
         navigationItem.title = "Back"
         ovc.imageId = "\(image.id!)"
         self.navigationController?.pushViewController(ovc, animated: true)
-        
     }
-    
     
     
     override func viewDidLoad() {
@@ -86,8 +79,6 @@ class SearchResultViewController: UIViewController, UITableViewDataSource,UITabl
         
         Alamofire.request(URL_SEARCH, method: .get,  parameters: parameters, encoding:URLEncoding.queryString).responseJSON
             { response in
-                
-                print(response)
                 
                 let jsonData = JSON(response.result.value!)
                 
@@ -104,7 +95,6 @@ class SearchResultViewController: UIViewController, UITableViewDataSource,UITabl
                 }
                 
                 self.tableViewPhotos.reloadData()
-                self.tableViewPhotos.backgroundColor = .customGray
                 self.tableViewPhotos.separatorStyle = .none
                 self.tableViewPhotos.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
                 self.endActivityIndicator()
