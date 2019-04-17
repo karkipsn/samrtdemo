@@ -108,7 +108,7 @@ class SearchResultViewController: UIViewController, UITableViewDataSource,UITabl
     
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Searched" + query!
+        navigationItem.title = query! + " Results"
     }
     
     
